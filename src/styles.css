@@ -1,0 +1,236 @@
+*{
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(18, 18, 18);
+    cursor: none;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+.landing{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100vh;
+    transform: translateX(40%);
+    transition: all 800ms 2000ms ease;
+}
+.left.loadLeft{
+    transform: translateX(0%);
+}
+.right.loadRight{
+    transform: translateX(0vw);
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100vh;
+    background-color: rgb(18, 18, 18);
+    transform: translateX(50vw);
+    transition: all 800ms 2000ms ease;
+}
+.login{
+    font-size: 32px;
+    color: white;
+}
+.title{
+    font-size: 32px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+}
+form input{
+    background-color: transparent;
+    color: white;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid white;
+    width: 80%;
+    height: 10vh;
+    margin: 2rem;
+}
+form input::placeholder{
+    color: rgb(161, 161, 161);
+}
+form .submit{
+    width: 80%;
+    height: 10vh;
+    outline: none;
+    border: none;
+    background-color: white;
+    color: rgb(18, 18, 18);
+    margin: 2rem;
+    font-size: 16px;
+}
+.cursor{
+    position: absolute;
+    top: 47%;
+    left: 35.7%;
+    z-index: 3;
+    pointer-events: none;
+}
+.cursorContent{
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: transparent;
+    backdrop-filter: invert();
+    -webkit-backdrop-filter: invert();
+    opacity: 0;
+    transition: all 500ms 2800ms;
+}
+.cursorContent.show{
+    opacity: 1;
+}
+.preloader{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(18, 18, 18);
+    overflow: hidden;
+    transition: all 800ms 200ms ease-out;
+    clip-path: circle(150vw at 50% 50%);
+    z-index: 5;
+}
+.preloader.done{
+    clip-path: circle(20px at 50% 50%);
+}
+.preloader.translated{
+    transform: translateY(-100vh);
+}
+.loading{
+    color: white;
+    transition: all 800ms 100ms;
+}
+.loading.finished{
+    opacity: 0;
+}
+h1 span{
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 300ms 1600ms ease;
+}
+span.spanFade{
+    opacity: 1;
+    transform: translateY(0px);
+}
+.bloc{
+    position: relative;
+    width: 20vh;
+    height: 20vh;
+    margin: 2rem;
+    overflow: hidden;
+    transition: all 800ms 2000ms ease;
+}
+.content{
+    position: absolute;
+    background-color: rgb(18, 18, 18);
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    clip-path: circle(5px);
+    z-index: 2;
+    transform: translateY(-100vh);
+    transition: all 800ms 1200ms ease;
+}
+.content.translate{
+    transform: translateY(0vh);
+}
+.content.expand{
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    clip-path: circle(15vh);
+}
+.bloc.rotate1{
+    margin: 4rem;
+    transform: rotate(45deg);
+}
+/*responsivity*/
+@media screen and (max-width: 1024px) {
+    .cursor{
+        top: 46%;
+        left: 38.7%;
+    }
+}
+@media screen and (max-width: 960px) {
+    .left{
+        flex-direction: column;
+        width: 55%;
+    }
+    .right{
+        width: 45%;
+    }
+    .bloc{
+        width: 15vh;
+        height: 15vh;
+    }
+    .content{
+        transform: translateY(100vh);
+    }
+    .cursor{
+        display: none;
+    }
+}
+@media screen and (max-width: 426px) {
+    .landing{
+        flex-direction: column;
+    }
+    .bloc{
+        width: 8vh;
+        height: 8vh;
+        margin: 1rem;
+    }
+    .content{
+        transform: translateY(-100vh);
+    }
+    .bloc.rotate1{
+        margin: 2rem;
+        transform: rotate(45deg);
+    }
+    .title{
+        font-size: 24px;
+    }
+    .left{
+        flex-direction: row;
+        width: 100%;
+        height: 40%;
+        transform: translateX(0%);
+    }
+    .right{
+        width: 100%;
+        height: 60%;
+        transform: translateX(0vw);
+        transform: translateY(100vh);
+    }
+    .cursorContent{
+        width: 30px;
+        height: 30px;
+    }
+}
